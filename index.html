@@ -12,7 +12,7 @@ class: center, middle
 
 .twenty[![knows graph](images/graphql_logo.png)]
 
-# Grasping GraphQL
+# Exploring GraphQL.js
 
 ## Mike Williamson
 
@@ -24,14 +24,6 @@ class: center, middle
 
 ```javascript
 pp = str => console.log(JSON.stringify(str, null, 2))
-```
-
----
-class: center, middle
-## GraphQL: It's a language!
-
-```graphql
-{ hello }
 ```
 
 ---
@@ -56,7 +48,7 @@ class: center, middle
 ```javascript
 var { graphql } = require('graphql')
 // one output, two inputs
-response = graphql(schema, query)
+// response = graphql(schema, query)
 ```
 
 ---
@@ -88,14 +80,13 @@ class: center, middle
 
 ```javascript
 var query = new GraphQLObjectType({
-  name: 'Query',
+  name: 'Query', // On the Query type
   fields: {
-    hello: {
+    hello: { // When someone calls "hello"
+      // Calling resolve() will return a string
       type: GraphQLString,
       resolve: () => {
-        // talk to a database?
-        // call an API?
-        // calculate something?
+        // talk to a database? call an API? calculate something?
       }
     }
 })
@@ -105,7 +96,7 @@ var query = new GraphQLObjectType({
 
 class: center, middle
 
-# So how does this even work?
+# So how does GraphQL work?
 
 ---
 
@@ -252,7 +243,7 @@ class: center, middle
 
 class: center, middle
 
-## Parsing: tokens > nodes > trees
+## Parsing: tokens into nodes, nodes into trees
 
 ---
 class: center, middle
@@ -323,7 +314,7 @@ class: center, middle
 
 ```javascript
 var { parse } = require('graphql/language')
-var ast = parse(new Source("{ hello }"))
+var ast = parse("{ hello }")
 ```
 
 ---
@@ -331,7 +322,7 @@ var ast = parse(new Source("{ hello }"))
 class: center, middle
 
 ```javascript
-pp(parse(new Source("{ hello }")))
+pp(parse("{ hello }"))
 {
   "kind": "Document",
   "definitions": [
@@ -383,7 +374,7 @@ pp(parse(new Source("{ hello }")))
 class: center, middle, parseTreeSmall
 
 ```javascript
-pp(parse(new Source("{ hello }")))
+pp(parse("{ hello }"))
 {
   "kind": "Document",
   "definitions": [
@@ -447,7 +438,7 @@ class: center, middle
 
 class: center, middle
 
-# How validation gets done: visiting our nodes
+# Validation: Walking the tree with visitors
 
 ```javascript
 var { visit } = require('graphql')
@@ -473,7 +464,10 @@ var vistor = {
 ```
 
 ---
+
 class: center, middle
+
+## Printing the node kind as we walk
 
 ```javascript
 > visit(parse(`{ hello }`, visitor)
@@ -514,6 +508,7 @@ class: center, middle
 
 ```javascript
 var { specifiedRules } = require('graphql/validation')
+
 validate(schema, parse(`{ kittens }`), specifiedRules)
 GraphQLError: Cannot query field "kittens" on type "Query"
 ```
@@ -522,7 +517,7 @@ GraphQLError: Cannot query field "kittens" on type "Query"
 
 class: center, middle
 
-# Rules are just vistors
+# Rules are just visitors
 
 ---
 
@@ -586,6 +581,7 @@ class: center, middle
 class: center, middle
 
 # Execution:
+
 ```javascript
 var { execute } = require('graphql/execution')
 ```
@@ -616,6 +612,15 @@ pp(execute(args))
 
 class: center, middle
 
+## execute runs resolvers and catches their errors
+
+* For Queries: in parallel (if possible)
+* For Mutations: in serial (source order)
+
+---
+
+class: center, middle
+
 # The life of a GraphQL query
 
 * Lexing ✔️
@@ -627,31 +632,15 @@ class: center, middle
 
 class: center, middle
 
-# Why knowing this matters...
+# Languages matter!
+
+* They're recursive. Be careful!
+* They are the most powerful tools we have for input validation!
+* They give visibility into what people want/don't.
+* They empower the user.
+* They simplify the server.
 
 ---
-class: center, middle
-
-### Input validation is critical for system security
-### Formal languages and parsers are the most powerful tools that exist for input validation
-## That's what GraphQL is
-
----
-
-class: center, middle
-
-# How it works matters:
-
-* Language evaluation is recursive: now data fetching is too. Use rules!
-* GraphQLString is the 🤷 of GraphQL. Be specific, use custom types!
-
-
-
-
-
----
-
-
 
 class: center, middle
 
