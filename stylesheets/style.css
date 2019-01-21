@@ -1,0 +1,232 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
+
+body,
+h1,
+h2,
+h3 {
+  font-family: 'Roboto';
+  color: #e3e3de;
+}
+
+.hljs-monokai .hljs {
+  overflow-x: hidden;
+  background-color: #190b28;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: normal;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.remark-slide,
+.remark-slide-content {
+  padding: 0;
+}
+
+.remark-code,
+.remark-inline-code {
+  font-family: 'Roboto Mono';
+}
+
+.parseTreeSmall .javascript {
+  font-size: 0.5em;
+}
+
+.parseTreeExtraSmall .javascript {
+  font-size: 0.25em;
+}
+
+.remark-slide-content {
+  background-color: #190b28;
+}
+
+body {
+  background-color: #e535ab;
+}
+
+.output code {
+  font-size: 0.9em;
+}
+
+.remark-slide p {
+  margin: 0;
+}
+
+code.javascript,
+code.graphql {
+  font-size: 1.5em;
+  text-align: left;
+  padding: 2em 0em;
+}
+
+.small code {
+  font-size: 0.4em;
+}
+
+.align_left {
+  text-align: left;
+}
+
+.fit_width img {
+  width: 100%;
+}
+
+.reference {
+  font-size: 0.7em;
+}
+
+.remark-container {
+  background-color: #e535ab;
+}
+
+.float_left pre {
+  float: left;
+}
+
+.clear_both pre {
+  clear: both;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: normal;
+  margin: 1em 1em 0em 1em;
+}
+
+.black {
+  background-color: #000;
+}
+
+.white {
+  color: #fff;
+}
+
+/* Two-column layout */
+.left-column {
+  color: #777;
+  width: 20%;
+  height: 92%;
+  float: left;
+}
+
+.left-column-skinny {
+  color: #777;
+  width: 10%;
+  height: 92%;
+  float: left;
+}
+
+.right-column-fat {
+  width: 90%;
+  float: right;
+  padding-top: 1em;
+}
+
+.quote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  height: 80%;
+  margin: 1.5em 10px;
+  line-height: 2.5em;
+  padding: 0.5em 10px;
+  quotes: '\201C''\201D''\2018''\2019';
+}
+
+.quote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+.quote p {
+  display: inline;
+}
+
+.quote {
+  padding: 1em;
+  font-style: italic;
+  color: #222;
+}
+
+.footnote {
+  font-size: 0.7em;
+  position: absolute;
+  bottom: 3em;
+}
+
+a,
+.left-column h2:last-of-type,
+.left-column h3:last-child {
+  color: #000;
+}
+
+.right-column {
+  width: 75%;
+  float: right;
+  padding-top: 1em;
+}
+
+ul > li {
+  list-style-type: none;
+  text-align: left;
+  font-size: 1.5em;
+  padding-left: 8em;
+}
+
+.ten img {
+  width: 10%;
+}
+.twenty img {
+  width: 20%;
+}
+.thirty img {
+  width: 30%;
+}
+.fourty img {
+  width: 40%;
+}
+
+.fifty img {
+  width: 50%;
+}
+
+.sixty img {
+  width: 50%;
+}
+
+.seventy img {
+  width: 70%;
+}
+
+.eighty img {
+  width: 80%;
+}
+
+.ninety img {
+  width: 90%;
+}
+
+.ninetyfive img {
+  width: 95%;
+}
+
+.onehundred img {
+  width: 100%;
+}
+
+.small_graph img {
+  width: 40%;
+}
+
+.logo img {
+  width: 100%;
+}
