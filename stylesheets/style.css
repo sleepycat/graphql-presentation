@@ -9,6 +9,10 @@ h3 {
   color: #e3e3de;
 }
 
+#graphql-it-s-a-specification-, #graphql-it-s-an-implementation- {
+	color: #190b28;
+}
+
 iframe {
   position: absolute;
   height: 100%;
