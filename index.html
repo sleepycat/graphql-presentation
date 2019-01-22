@@ -12,7 +12,7 @@ class: center, middle
 
 .twenty[![knows graph](images/graphql_logo.png)]
 
-# Exploring GraphQL.js
+# Exploring GraphQL(.js)
 
 ## Mike Williamson
 
@@ -80,13 +80,12 @@ class: center, middle
 
 ```javascript
 var query = new GraphQLObjectType({
-  name: 'Query', // On the Query type
+  name: 'Query', // Base object, like window in JS
   fields: {
-    hello: { // When someone calls "hello"
-      // Calling resolve() will return a string
-      type: GraphQLString,
+    hello: { // When someone calls "hello" run resolve()
+      type: GraphQLString, // resolve() will return a string
       resolve: () => {
-        // talk to a database? call an API? calculate something?
+        // What happens here is up to you.
       }
     }
 })
@@ -371,58 +370,7 @@ pp(parse("{ hello }"))
 ```
 ---
 
-class: center, middle, parseTreeSmall
-
-```javascript
-pp(parse("{ hello }"))
-{
-  "kind": "Document",
-  "definitions": [
-    {
-      "kind": "OperationDefinition",
-      "operation": "query",
-      "variableDefinitions": [],
-      "directives": [],
-      "selectionSet": {
-        "kind": "SelectionSet",
-        "selections": [
-          {
-            "kind": "Field",
-            "name": {
-              "kind": "Name",
-              "value": "hello",
-              "loc": {
-                "start": 2,
-                "end": 7
-              }
-            },
-            "arguments": [],
-            "directives": [],
-            "loc": {
-              "start": 2,
-              "end": 7
-            }
-          }
-        ],
-        "loc": {
-          "start": 0,
-          "end": 9
-        }
-      },
-      "loc": {
-        "start": 0,
-        "end": 9
-      }
-    }
-  ],
-  "loc": {
-    "start": 0,
-    "end": 9
-  }
-}
-
-```
-
+<iframe src="https://astexplorer.net/#/gist/5718efedb9dd49626d482632b1bc0378/3c1052727e4dc0dfbd993ea55a7c11b2b4994b6d"></iframe>
 ---
 
 class: center, middle

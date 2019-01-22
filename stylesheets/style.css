@@ -9,6 +9,13 @@ h3 {
   color: #e3e3de;
 }
 
+iframe {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border: none;
+}
+
 .hljs-monokai .hljs {
   overflow-x: hidden;
   background-color: #190b28;
