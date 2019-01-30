@@ -1,6 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
 
+em {
+  font-weight: bolder;
+  font-size: larger;
+}
+
 body,
 h1,
 h2,
@@ -9,8 +14,9 @@ h3 {
   color: #e3e3de;
 }
 
-#graphql-it-s-a-specification-, #graphql-it-s-an-implementation- {
-	color: #190b28;
+#graphql-it-s-a-specification-,
+#graphql-it-s-an-implementation- {
+  color: #190b28;
 }
 
 iframe {
@@ -196,12 +202,15 @@ ul > li {
 .ten img {
   width: 10%;
 }
+
 .twenty img {
   width: 20%;
 }
+
 .thirty img {
   width: 30%;
 }
+
 .fourty img {
   width: 40%;
 }

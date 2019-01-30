@@ -19,57 +19,67 @@ class: center, middle
 ---
 
 class: center, middle
-## GraphQL: It's a language!
+## GraphQL: turns queries into data
 
 ```graphql
-{
-  Person(name: "Luke Skywalker") {
-    birthYear
-    name
-    eyeColor
-  }
-}
+        //query                     //response
+                                    {
+                                      "data": {
+        { hello }      ➡                "hello": "world"
+                       ⬅               }
+                                    }
 ```
 
 ---
-
-background-image: url(images/spec.png)
 class: center, middle
 
-# GraphQL: It's a specification!
+## TLDR: Why is this good?
 
----
-
-background-image: url(images/reference-implementation.png)
-class: center, middle
-
-# GraphQL: It's an implementation!
+* All clients look the same (Simple!)
+* Only send clients what they ask for (Efficient!)
 
 ---
 
 class: center, middle
-## graphql: It's a function!
+
+# In a nutshell...
+
+---
+
+class: center, middle
+
+## Web servers map URLS to functions
 
 ```javascript
-var { graphql } = require('graphql')
-// one output, two inputs
-var result = graphql(schema, query)
+const app = express()
+app.get('/hello', (req, res) => res.json({hello: 'world'}))
 ```
 
 ---
 
 class: center, middle
+
+## GraphQL maps fields to functions
 
 ```javascript
 var query = new GraphQLObjectType({
   name: 'Query',
   fields: {
-	  hello: {type: GraphQLString, resolve: () => 'world'}
+    hello: {type: GraphQLString, resolve: () => 'world'}
   }
 })
 
 var schema = new GraphQLSchema({ query })
+```
+---
 
+class: center, middle
+
+## graphql: It's a function!
+
+```javascript
+var { graphql } = require('graphql')
+// one output, two inputs
 graphql(schema, `{ hello }`)
 {
   "data": {
@@ -79,28 +89,14 @@ graphql(schema, `{ hello }`)
 ```
 
 ---
+
 class: center, middle
 
-## It's not about databases
+# So how does that work?
 
 ```javascript
-var query = new GraphQLObjectType({
-  name: 'Query', // Base object, like window in JS
-  fields: {
-    hello: { // When someone calls "hello" run resolve()
-      type: GraphQLString, // resolve() will return a string
-      resolve: () => {
-        // What happens here is up to you.
-      }
-    }
-})
+graphql(schema, `{ hello }`)
 ```
-
----
-
-class: center, middle
-
-# So how does GraphQL work?
 
 ---
 
@@ -451,6 +447,24 @@ class: center, middle
 ```javascript
 validate(schema, parse(`{ kittens }`))
 GraphQLError: Cannot query field "kittens" on type "Query"
+```
+
+---
+
+class: center, middle
+
+## But you can make them explicit
+
+```bash
+var { specifiedRules } = require('graphql/validation')
+specifiedRules
+[ [Function: ExecutableDefinitions],
+  [Function: UniqueOperationNames],
+  [Function: LoneAnonymousOperation],
+  [Function: SingleFieldSubscriptions],
+  [Function: KnownTypeNames],
+  ...
+
 ```
 
 ---
