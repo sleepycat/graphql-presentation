@@ -31,18 +31,10 @@ class: center, middle
 ```
 
 ---
-class: center, middle
-
-## TLDR: Why is this good?
-
-* All clients look the same (Simple!)
-* Only send clients what they ask for (Efficient!)
-
----
 
 class: center, middle
 
-# In a nutshell...
+# How?
 
 ---
 
@@ -319,58 +311,6 @@ var ast = parse("{ hello }")
 
 ---
 
-class: center, middle
-
-```javascript
-parse("{ hello }")
-{
-  "kind": "Document",
-  "definitions": [
-    {
-      "kind": "OperationDefinition",
-      "operation": "query",
-      "variableDefinitions": [],
-      "directives": [],
-      "selectionSet": {
-        "kind": "SelectionSet",
-        "selections": [
-          {
-            "kind": "Field",
-            "name": {
-              "kind": "Name",
-              "value": "hello",
-              "loc": {
-                "start": 2,
-                "end": 7
-              }
-            },
-            "arguments": [],
-            "directives": [],
-            "loc": {
-              "start": 2,
-              "end": 7
-            }
-          }
-        ],
-        "loc": {
-          "start": 0,
-          "end": 9
-        }
-      },
-      "loc": {
-        "start": 0,
-        "end": 9
-      }
-    }
-  ],
-  "loc": {
-    "start": 0,
-    "end": 9
-  }
-}
-```
----
-
 <iframe src="https://astexplorer.net/#/gist/5718efedb9dd49626d482632b1bc0378/3c1052727e4dc0dfbd993ea55a7c11b2b4994b6d"></iframe>
 ---
 
@@ -455,7 +395,7 @@ class: center, middle
 
 ## But you can make them explicit
 
-```bash
+```javascript
 var { specifiedRules } = require('graphql/validation')
 specifiedRules
 [ [Function: ExecutableDefinitions],
@@ -547,7 +487,9 @@ class: center, middle
 
 class: center, middle
 
-# Execution:
+## Execution: run resolvers. catch errors.
+
+---
 
 ```javascript
 var { execute } = require('graphql/execution')
@@ -561,6 +503,7 @@ class: center, middle
 var args = {
   schema,
   document: parse(`{ hello }`),
+  // value 0 in the "value of the previous resolver" chain
   rootValue: {},
   variableValues: {},
   operationName: '',
@@ -579,15 +522,6 @@ execute(args)
 
 class: center, middle
 
-## execute runs resolvers and catches their errors
-
-* For Queries: in parallel (if possible)
-* For Mutations: in serial (source order)
-
----
-
-class: center, middle
-
 # The life of a GraphQL query
 
 * Lexing ✔️
@@ -601,8 +535,8 @@ class: center, middle
 
 # Languages matter!
 
-* They're recursive. Be careful!
 * They are the most powerful tools we have for input validation!
+* They're recursive. How deep is to deep?
 * They give visibility into what people want/don't.
 * They empower the user.
 * They simplify the server.
